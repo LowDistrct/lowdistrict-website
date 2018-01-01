@@ -38,6 +38,13 @@ include "/includes/templates/blog.php";
 				includeBlogList("SELECT * FROM `posts` WHERE `car_make` = '$_GET[make]' ORDER BY `car_model` ASC");
 			}
 		}
+		else {
+			?><div style="padding: 10px 0px; margin: 40px 0px; background-color: #EDEDED;"><?php
+				includeBlogList("SELECT * FROM `posts` ORDER BY `views` DESC LIMIT 0,4");
+			?></div><?php
+			includeBlogList("SELECT * FROM `posts` WHERE (`category` <= 1) ORDER BY `id` DESC LIMIT 0,4");
+			includeBlogList("SELECT * FROM `posts` WHERE (`category` >= 1) ORDER BY `id` DESC LIMIT 0,4");
+		}
 	?>
 
 	<!-- Footer -->
