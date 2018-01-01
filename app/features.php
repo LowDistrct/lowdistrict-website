@@ -1,5 +1,6 @@
 <?php
 include "/php/core.php";
+include "/php/includes/features/include.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,10 +21,10 @@ include "/php/core.php";
 	<!-- Make Emblems -->
 	<?php
 		if (!isset($_GET['make'])) {
-			include("/includes/features/make_emblems.php");
+			includeMakeEmblems();
 		}
 		else {
-			include("/includes/features/model_selection.php");
+			includeModelSelection();
 		}
 	?>
 
