@@ -1,6 +1,7 @@
 <?php
 include "/php/core.php";
-include "/php/includes/features/include.php";
+include "/includes/features/include.php";
+include "/includes/templates/blog.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,24 +21,24 @@ include "/php/includes/features/include.php";
 
 	<!-- Make Emblems -->
 	<?php
-		if (!isset($_GET['make'])) {
-			includeMakeEmblems();
+		if (isset($_GET['make'])) {
+			includeModelSelection();
 		}
 		else {
-			includeModelSelection();
+			includeMakeEmblems();
 		}
 	?>
 
-	<div class="blog-list">
-		<?php
-			include("/includes/templates/blog.php");
-			$posts = sqlQueryArray("SELECT * FROM `posts` WHERE `car_make` = '$_GET[make]' ORDER BY `car_model` ASC");
-			foreach ($posts as $post) {
-				$photo = sqlQueryArray("SELECT * FROM `photographers` WHERE (`id` = $post[shot_by]) LIMIT 0,1");
-				blogDisplay($post, $photo[0]);
+	<?php
+		if (isset($_GET['make'])) {
+			if (isset($_GET['model'])) {
+				includeBlogList("SELECT * FROM `posts` WHERE `car_make` = '$_GET[make]' AND `car_model` = '$_GET[model]' ORDER BY `car_model` ASC");
 			}
-		?>
-	</div>
+			else {
+				includeBlogList("SELECT * FROM `posts` WHERE `car_make` = '$_GET[make]' ORDER BY `car_model` ASC");
+			}
+		}
+	?>
 
 	<!-- Footer -->
 	<?php include("/includes/global/footer.php"); ?>

@@ -1,3 +1,4 @@
+<?php function includeModelSelection() { ?>
 <div class="model-selection">
 	<div class="emblem" bg="/images/car_make/dark/<?php echo $_GET['make']; ?>.png"></div>
 	<?php if (!isset($_GET['model'])) { ?>
@@ -16,3 +17,4 @@
 	</div>
 	<?php } ?>
 </div>
+<?php } ?>
