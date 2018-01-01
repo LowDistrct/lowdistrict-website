@@ -2,6 +2,8 @@
 
 include "/php/core.php";
 
+include "/includes/index/include.php";
+
 // Page Engine
 $page = isset($_GET['page'])?$_GET['page']:1;
 $numPerPage = 8;
@@ -25,10 +27,10 @@ $pages = ceil(sqlQueryNum("SELECT * FROM `posts`") / $numPerPage);
 	<?php include("/includes/global/social_bar.php"); ?>
 
 	<!-- Full Screen Slider -->
-	<?php include("/includes/index/slider.php"); ?>
+	<?php includeSlider(); ?>
 
 	<!-- Who Are We -->
-	<?php include("/includes/index/intro.php"); ?>
+	<?php includeIntro(); ?>
 
 	<!-- Page Selector -->
 	<?php include("/includes/global/pages.php"); ?>
@@ -55,25 +57,13 @@ $pages = ceil(sqlQueryNum("SELECT * FROM `posts`") / $numPerPage);
 			<!-- #region Popular Tags -->
 			<h1>Popular Tags</h1>
 			<div class="popular-tags">
-				<?php
-					include "/includes/index/popular_tags.php";
-					$tags = sqlQueryArray("SELECT * FROM `tags` ORDER BY `clicks` DESC LIMIT 0,14");
-					foreach ($tags as $tag) {
-						tagDisplay($tag);
-					}
-				?>
+				<?php includePopularTags(); ?>
 			</div>
 			<!-- #endregion -->
 			<!-- #region Popular Posts -->
 			<h1>Popular Posts</h1>
 			<div class="popular-posts">
-				<?php
-					include "/includes/index/popular_posts.php";
-					$posts = sqlQueryArray("SELECT * FROM `posts` ORDER BY `views` DESC LIMIT 0,6");
-					foreach ($posts as $post) {
-						postDisplay($post);
-					}
-				?>
+				<?php includePopularPosts(); ?>
 			</div>
 			<div class="view-all">
 				<a href="/seeall.php?index=0&id=0&i">View All</a>
@@ -82,13 +72,7 @@ $pages = ceil(sqlQueryNum("SELECT * FROM `posts`") / $numPerPage);
 			<!-- #region Latest Recruits -->
 			<h1>Latest Recruits</h1>
 			<div class="latest-recruits">
-				<?php
-					include "/includes/index/latest_recruits.php";
-					$latestRecruits = sqlQueryArray("SELECT * FROM `photographers` WHERE (`standing` = 2) ORDER BY `date_joined` DESC LIMIT 0,3");
-					foreach ($latestRecruits as $recruit) {
-						teamDisplay($recruit);
-					}
-				?>
+				<?php includeLatestRecruits(); ?>
 			</div>
 			<div class="view-all">
 				<a href="/seeall.php?index=1&id=4&i">View All</a>
@@ -97,10 +81,7 @@ $pages = ceil(sqlQueryNum("SELECT * FROM `posts`") / $numPerPage);
 			<!-- #region Popular Makes -->
 			<h1>Popular Makes</h1>
 			<div class="popular-makes cf">
-				<?php
-					include "/includes/index/popular_makes.php";
-					makeDisplay(sqlQueryArray("SELECT * FROM `posts`"));
-				?>
+				<?php includePopularMakes(); ?>
 			</div>
 			<div class="view-all">
 				<a href="/blog.php">View All</a>

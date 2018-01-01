@@ -1,5 +1,6 @@
 <?php
-function makeDisplay($posts) {
+function includePopularMakes() {
+	$posts = sqlQueryArray("SELECT * FROM `posts`");
 	$makes = array();
 	foreach ($posts as $post) {
 		if (isset($makes[$post['car_make']])) {
