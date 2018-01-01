@@ -1,0 +1,47 @@
+@import "../templates/blog";
+
+.blog-container {
+	padding: 10px;
+	margin-bottom: 35px;
+	width: 275px;
+	display: inline-block;
+	h1 {
+		letter-spacing: 1px;
+		font-size: 12px;
+		font-family: Lite;
+	}
+	ul:first-of-type {
+		display: none;
+	}
+	.cover-blog {
+		display: block;
+		height: 255px;
+	}
+	p {
+		display: none;
+	}
+	.button-container .button {
+		background-color: transparent;
+		padding: 0px; // RESETS PARENT VALUES
+		padding-left: 15px;
+		color: #6E6E6E;
+		position: relative;
+		&:after, &:before {
+			content: " ";
+			position: absolute;
+			background-color: #6E6E6E;
+		}
+		&:after {
+			left: 0px;
+			top: 4px;
+			width: 10px;
+			height: 2px;
+		}
+		&:before {
+			left: 4px;
+			top: 0px;
+			width: 2px;
+			height: 10px;
+		}
+	}
+}
