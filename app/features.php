@@ -57,7 +57,9 @@ include "/includes/templates/blog.php";
 
 	<!-- Scripts -->
 	<?php include("/includes/global/scripts.php"); ?>
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+		<?php include("/js/features.js"); ?>
+	</script>
 
 </div>
 </body>
