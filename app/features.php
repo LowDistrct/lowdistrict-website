@@ -39,11 +39,16 @@ include "/includes/templates/blog.php";
 			}
 		}
 		else {
-			?><div style="padding: 10px 0px; margin: 40px 0px; background-color: #EDEDED;"><?php
-				includeBlogList("SELECT * FROM `posts` ORDER BY `views` DESC LIMIT 0,4");
+
+			// ADD TITLES TO BLOG_LIST (REFRESH PAGE)
+
+			?><div style="padding: 10px 0px; background-color: #EDEDED;">
+			<?php
+				includeBlogListDiv("SELECT * FROM `posts` ORDER BY `views` DESC LIMIT 0,4", "Most Popular", "from most views to least");
 			?></div><?php
-			includeBlogList("SELECT * FROM `posts` WHERE (`category` <= 1) ORDER BY `id` DESC LIMIT 0,4");
-			includeBlogList("SELECT * FROM `posts` WHERE (`category` >= 1) ORDER BY `id` DESC LIMIT 0,4");
+			includeBlogListDiv("SELECT * FROM `posts` WHERE (`category` <= 1) ORDER BY `id` DESC LIMIT 0,4", "Photoshoots", "from newest to oldest");
+			includeBlogListDiv("SELECT * FROM `posts` WHERE (`category` >= 1) ORDER BY `id` DESC LIMIT 0,4", "Videoshoots", "from newest to oldest");
+			includeFindPhotographer();
 		}
 	?>
 

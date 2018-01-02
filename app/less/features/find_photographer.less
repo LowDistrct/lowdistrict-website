@@ -1,0 +1,50 @@
+.find-features {
+	width: 1200px;
+	margin: 35px auto;
+	.header {
+		width: 100%;
+		h1 {
+			font-family: BebasNeue;
+			font-size: 24px;
+			font-weight: normal;
+			text-transform: uppercase;
+			text-align: center;
+			letter-spacing: 2px;
+			margin-top: 12px;
+			transform: scaleY(0.9);
+		}
+	}
+	.list {
+		width: 100%;
+		margin: 35px auto;
+		column-count: 5;
+		.country {
+			display: block;
+			font-size: 20px;
+			font-family: BebasNeue;
+			margin-top: 35px;
+			letter-spacing: 1.3px;
+			&:first-child {
+				margin-top: 0px;
+			}
+			.flag {
+				height: 13px;
+				display: inline-block;
+				margin-left: 5px;
+			}
+		}
+		.state {
+			display: block;
+			font-size: 18px;
+			font-family: Lite;
+		}
+		.city {
+			display: block;
+			font-size: 16px;
+			line-height: 22px;
+			font-family: Lite;
+			font-style: italic;
+			margin-left: 20px;
+		}
+	}
+}
