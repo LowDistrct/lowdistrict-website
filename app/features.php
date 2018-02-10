@@ -39,9 +39,6 @@ include "/includes/templates/blog.php";
 			}
 		}
 		else {
-
-			// ADD TITLES TO BLOG_LIST (REFRESH PAGE)
-
 			?><div style="padding: 10px 0px; background-color: #EDEDED;">
 			<?php
 				includeBlogListDiv("SELECT * FROM `posts` ORDER BY `views` DESC LIMIT 0,4", "Most Popular", "from most views to least");
